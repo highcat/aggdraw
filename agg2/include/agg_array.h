@@ -17,6 +17,7 @@
 
 #include <string.h>
 #include "agg_basics.h"
+#include <stdint.h>
 
 namespace agg
 {
@@ -520,7 +521,7 @@ namespace agg
                 int8u* ptr = m_buf_ptr;
                 if(alignment > 1)
                 {
-                    unsigned align = (alignment - unsigned(ptr) % alignment) % alignment;
+                    uintptr_t align = (alignment - uintptr_t(ptr) % alignment) % alignment;
                     size += align;
                     ptr += align;
                     if(size <= m_rest)
